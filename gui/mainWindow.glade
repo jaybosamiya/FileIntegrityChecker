@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.16.1 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
+  <object class="GtkFileFilter" id="AllFileFilter">
+    <patterns>
+      <pattern>*</pattern>
+    </patterns>
+  </object>
   <object class="GtkFileFilter" id="IntegrityFileFilter">
     <mime-types>
       <mime-type>application/json</mime-type>

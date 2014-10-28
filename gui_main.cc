@@ -5,6 +5,7 @@
 
 namespace gui_common {
   Glib::RefPtr<Gtk::Builder> builder;
+  Glib::RefPtr<Gtk::FileFilter> IntegrityFileFilter, AllFileFilter;
 }
 
 namespace button_signal_handler {
@@ -29,7 +30,7 @@ namespace button_signal_handler {
   }
 
   void help() {
-    std::cout << "H" << std::endl; // TODO: Rewrite
+    gui_dialogs::show_help();
   }
 
   void about() {
@@ -40,7 +41,7 @@ namespace button_signal_handler {
 
 int run_gui (int argc, char *argv[]) {
   Gtk::Main kit(argc, argv);
-  using gui_common::builder;
+  using namespace gui_common;
 
   // Read the UI file and get all the necessary elements
   try {
@@ -58,6 +59,12 @@ int run_gui (int argc, char *argv[]) {
   SET_WIDGET(Button,helpButton);
   SET_WIDGET(Button,aboutButton);
   #undef SET_WIDGET
+
+  // Set up gui_common FileFilters
+  IntegrityFileFilter = Gtk::FileFilter::create();
+  IntegrityFileFilter->add_pattern("*.integrity");
+  AllFileFilter = Gtk::FileFilter::create();
+  AllFileFilter->add_pattern("*");
 
   // Connect the buttons' signals to relevant functions
   #define SET_HANDLER(X) X##Button->signal_clicked().connect(sigc::ptr_fun(&button_signal_handler::X))

@@ -2,7 +2,8 @@
 #include "gui_main.h"
 
 namespace gui_dialogs {
-  bool is_initialization_done = false;
+
+  using namespace gui_common;
 
   void FileDialog::location_setter(int response_id) {
     location = get_filename();
@@ -30,16 +31,39 @@ namespace gui_dialogs {
   }
 
   FileOpenDialog::FileOpenDialog(const Glib::ustring& title) :
-    FileDialog(title, Gtk::FILE_CHOOSER_ACTION_OPEN) {}
+    FileDialog(title, Gtk::FILE_CHOOSER_ACTION_OPEN) {
+    this->set_filter(AllFileFilter);
+  }
 
   FileOpenDialog::FileOpenDialog() :
-    FileDialog("Select file", Gtk::FILE_CHOOSER_ACTION_OPEN) {}
+    FileDialog("Select file to make checksums for", Gtk::FILE_CHOOSER_ACTION_OPEN) {
+    this->set_filter(AllFileFilter);
+  }
 
   IntegrityFileOpenDialog::IntegrityFileOpenDialog() :
-    FileOpenDialog("Select .integrity file") {}
+    FileOpenDialog("Select .integrity file") {
+    this->set_filter(IntegrityFileFilter);
+  }
 
   IntegrityFileSaveDialog::IntegrityFileSaveDialog() :
-    FileDialog("Save .integrity file", Gtk::FILE_CHOOSER_ACTION_SAVE) {}
+    FileDialog("Save .integrity file", Gtk::FILE_CHOOSER_ACTION_SAVE) {
+    this->set_filter(IntegrityFileFilter);
+  }
+
+  static Gtk::MessageDialog* helpMessageDialog = 0;
+
+  static void help_message_dialog_response(int response_id) {
+    if((response_id == Gtk::RESPONSE_CLOSE) ||
+        (response_id == Gtk::RESPONSE_OK) ||
+        (response_id == Gtk::RESPONSE_CANCEL) )
+      helpMessageDialog->hide();
+  }
+
+  void show_help() {
+    builder->get_widget("helpMessageDialog",helpMessageDialog);
+    helpMessageDialog->signal_response().connect(sigc::ptr_fun(&gui_dialogs::help_message_dialog_response));
+    helpMessageDialog->run();
+  }
 
   static Gtk::AboutDialog* aboutDialog = 0;
 
@@ -50,7 +74,7 @@ namespace gui_dialogs {
   }
 
   void show_about_dialog() {
-    gui_common::builder->get_widget("aboutDialog",aboutDialog);
+    builder->get_widget("aboutDialog",aboutDialog);
     aboutDialog->signal_response().connect(sigc::ptr_fun(&gui_dialogs::about_dialog_response));
     aboutDialog->run();
   }

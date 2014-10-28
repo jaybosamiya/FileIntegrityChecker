@@ -36,6 +36,7 @@ namespace gui_dialogs {
       IntegrityFileSaveDialog();
   };
 
+  void show_help();
   void show_about_dialog();
 
 }

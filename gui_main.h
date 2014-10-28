@@ -7,6 +7,7 @@
 
 namespace gui_common {
   extern Glib::RefPtr<Gtk::Builder> builder;
+  extern Glib::RefPtr<Gtk::FileFilter> IntegrityFileFilter, AllFileFilter;
 }
 
 int run_gui (int argc, char *argv[]);
