@@ -41,4 +41,18 @@ namespace gui_dialogs {
   IntegrityFileSaveDialog::IntegrityFileSaveDialog() :
     FileDialog("Save .integrity file", Gtk::FILE_CHOOSER_ACTION_SAVE) {}
 
+  static Gtk::AboutDialog* aboutDialog = 0;
+
+  static void about_dialog_response(int response_id) {
+    if((response_id == Gtk::RESPONSE_CLOSE) ||
+        (response_id == Gtk::RESPONSE_CANCEL) )
+      aboutDialog->hide();
+  }
+
+  void show_about_dialog() {
+    gui_common::builder->get_widget("aboutDialog",aboutDialog);
+    aboutDialog->signal_response().connect(sigc::ptr_fun(&gui_dialogs::about_dialog_response));
+    aboutDialog->run();
+  }
+
 }

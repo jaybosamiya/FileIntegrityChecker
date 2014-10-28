@@ -1,8 +1,9 @@
 #ifndef GUI_DIALOGS_H
 #define GUI_DIALOGS_H
 
-#include <gtkmm.h>
+#include "gui_main.h"
 
+#include <gtkmm.h>
 #include <string>
 
 namespace gui_dialogs {
@@ -34,6 +35,8 @@ namespace gui_dialogs {
     public:
       IntegrityFileSaveDialog();
   };
+
+  void show_about_dialog();
 
 }
 

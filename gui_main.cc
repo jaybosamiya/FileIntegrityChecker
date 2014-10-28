@@ -33,7 +33,7 @@ namespace button_signal_handler {
   }
 
   void about() {
-    std::cout << "A" << std::endl; // TODO: Rewrite
+    gui_dialogs::show_about_dialog();
   }
 
 }
