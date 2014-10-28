@@ -16,7 +16,6 @@ namespace gui_dialogs {
     is_location_initialized(false) {
     location = std::string("");
     add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-    add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
     signal_response().connect(sigc::mem_fun(*this, &FileDialog::location_setter));
   }
 
@@ -33,11 +32,13 @@ namespace gui_dialogs {
   FileOpenDialog::FileOpenDialog(const Glib::ustring& title) :
     FileDialog(title, Gtk::FILE_CHOOSER_ACTION_OPEN) {
     this->set_filter(AllFileFilter);
+    add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
   }
 
   FileOpenDialog::FileOpenDialog() :
     FileDialog("Select file to make checksums for", Gtk::FILE_CHOOSER_ACTION_OPEN) {
     this->set_filter(AllFileFilter);
+    add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
   }
 
   IntegrityFileOpenDialog::IntegrityFileOpenDialog() :
@@ -48,6 +49,7 @@ namespace gui_dialogs {
   IntegrityFileSaveDialog::IntegrityFileSaveDialog() :
     FileDialog("Save .integrity file", Gtk::FILE_CHOOSER_ACTION_SAVE) {
     this->set_filter(IntegrityFileFilter);
+    add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_OK);
   }
 
   static Gtk::MessageDialog* helpMessageDialog = 0;
