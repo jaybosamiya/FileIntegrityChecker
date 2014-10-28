@@ -7,31 +7,6 @@ namespace gui_dialogs {
   bool is_initialization_done = false;
   Gtk::FileChooserDialog *saveIntegrityFileFileChooserDialog, *openFileFileChooserDialog;
 
-  static std::string location;
-  static bool is_location_initialized;
-
-  void openFileOpen() {
-    location = openFileFileChooserDialog->get_filename();
-    is_location_initialized = true;
-    openFileFileChooserDialog->hide();
-  }
-
-  void openFileCancel() {
-    is_location_initialized = false;
-    openFileFileChooserDialog->hide();
-  }
-
-  void saveIntegrityFileSave() {
-    location = saveIntegrityFileFileChooserDialog->get_filename();
-    is_location_initialized = true;
-    saveIntegrityFileFileChooserDialog->hide();
-  }
-
-  void saveIntegrityFileCancel() {
-    is_location_initialized = false;
-    saveIntegrityFileFileChooserDialog->hide();
-  }
-
   void init() {
     if ( is_initialization_done )
       return;
@@ -43,20 +18,6 @@ namespace gui_dialogs {
     SET_WIDGET(saveIntegrityFileFileChooserDialog);
     SET_WIDGET(openFileFileChooserDialog);
     #undef SET_WIDGET
-    #define LOCAL_SET_WIDGET(T,X) Gtk::T* X = 0; builder->get_widget(#X, X)
-    LOCAL_SET_WIDGET(Button,openFileOpenButton);
-    LOCAL_SET_WIDGET(Button,openFileCancelButton);
-    LOCAL_SET_WIDGET(Button,saveIntegrityFileSaveButton);
-    LOCAL_SET_WIDGET(Button,saveIntegrityFileCancelButton);
-    #undef LOCAL_SET_WIDGET
-
-    // Connect the buttons' signals to relevant functions
-    #define SET_HANDLER(X) X##Button->signal_clicked().connect(sigc::ptr_fun(&X))
-    SET_HANDLER(openFileOpen);
-    SET_HANDLER(openFileCancel);
-    SET_HANDLER(saveIntegrityFileSave);
-    SET_HANDLER(saveIntegrityFileCancel);
-    #undef SET_HANDLER
 
     is_initialization_done = true;
   }
