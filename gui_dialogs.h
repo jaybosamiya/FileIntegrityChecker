@@ -7,19 +7,19 @@
 
 namespace gui_dialogs {
 
-  class Dialog : public Gtk::FileChooserDialog {
+  class FileDialog : public Gtk::FileChooserDialog {
     private:
       void location_setter(int response_id);
     protected:
       bool is_location_initialized;
       std::string location;
-      Dialog(const Glib::ustring& title, Gtk::FileChooserAction action);
+      FileDialog(const Glib::ustring& title, Gtk::FileChooserAction action);
     public:
       bool get_location(std::string &loc); // Returns true iff loc is set (i.e. user does not cancel the dialog)
       void reset_location() { is_location_initialized = false; }
   };
 
-  class FileOpenDialog : public Dialog {
+  class FileOpenDialog : public FileDialog {
     public:
       FileOpenDialog(const Glib::ustring& title);
       FileOpenDialog();
@@ -30,7 +30,7 @@ namespace gui_dialogs {
       IntegrityFileOpenDialog();
   };
 
-  class IntegrityFileSaveDialog : public Dialog {
+  class IntegrityFileSaveDialog : public FileDialog {
     public:
       IntegrityFileSaveDialog();
   };
