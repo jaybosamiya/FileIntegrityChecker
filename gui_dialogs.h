@@ -34,6 +34,7 @@ namespace gui_dialogs {
     public:
       IntegrityFileSaveDialog();
   };
+
 }
 
 #endif
