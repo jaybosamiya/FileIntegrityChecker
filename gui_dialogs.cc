@@ -19,6 +19,11 @@ namespace gui_dialogs {
     SET_WIDGET(openFileFileChooserDialog);
     #undef SET_WIDGET
 
+    saveIntegrityFileFileChooserDialog->add_button("_Cancel",Gtk::RESPONSE_CANCEL);
+    saveIntegrityFileFileChooserDialog->add_button("_Save",Gtk::RESPONSE_OK);
+    openFileFileChooserDialog->add_button("_Cancel",Gtk::RESPONSE_CANCEL);
+    openFileFileChooserDialog->add_button("_Open",Gtk::RESPONSE_OK);
+
     is_initialization_done = true;
   }
 
@@ -26,18 +31,18 @@ namespace gui_dialogs {
 //    Gtk::FileChooserDialog x;
 //    x.get_filename
     init();
-    openFileFileChooserDialog->show();
+    int x = openFileFileChooserDialog->run();
+    std::cout << x << std::endl;
 //    string z = openFileFileChooserDialog->get_filename();
     return 0;
   }
 
   bool FileOpenDialog::get_location(std::string &loc) {
-    if ( this->is_location_initialized )
-      return this->location;
-    gui_dialogs::is_location_initialized = false;
-    openFileFileChooserDialog->show();
-    Gtk::FileChooserDialog x;
-    x.on_hide()
+    if ( this->is_location_initialized ) {
+      loc = this->location;
+      return true;
+    }
+    // TODO: Write more code
   }
 
   bool IntegrityFileOpenDialog::get_location(std::string &loc) {
