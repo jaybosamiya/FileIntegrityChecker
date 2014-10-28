@@ -10,16 +10,22 @@ namespace gui_common {
 namespace button_signal_handler {
 
   void makeIntegrityFile() {
-    std::string location_of_file;
+    std::string location_of_file, location_of_integrity_file;
     gui_dialogs::FileOpenDialog file_open_dialog;
-    if ( !file_open_dialog.get_location(location_of_file) ) {
+    gui_dialogs::IntegrityFileSaveDialog integrity_file_save_dialog;
+    if ( !file_open_dialog.get_location(location_of_file) )
       return;
-    }
-    std::cout << location_of_file << std::endl; // TODO: Rewrite
+    if ( !integrity_file_save_dialog.get_location(location_of_integrity_file) )
+      return;
+    std::cout << location_of_file << '\n' << location_of_integrity_file << '\n' << std::endl; // TODO: Connect to the backend from here
   }
 
   void testIntegrity() {
-    std::cout << "TI" << std::endl; // TODO: Rewrite
+    std::string location_of_integrity_file;
+    gui_dialogs::IntegrityFileOpenDialog integrity_file_open_dialog;
+    if ( !integrity_file_open_dialog.get_location(location_of_integrity_file) )
+      return;
+    std::cout << location_of_integrity_file << '\n' << std::endl; // TODO: Connect to the backend from here
   }
 
   void help() {
