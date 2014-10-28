@@ -10,8 +10,12 @@ namespace gui_common {
 namespace button_signal_handler {
 
   void makeIntegrityFile() {
-    std::cout << "MIF" << std::endl; // TODO: Rewrite
-    gui_dialogs::dialog_test();
+    std::string location_of_file;
+    gui_dialogs::FileOpenDialog file_open_dialog;
+    if ( !file_open_dialog.get_location(location_of_file) ) {
+      return;
+    }
+    std::cout << location_of_file << std::endl; // TODO: Rewrite
   }
 
   void testIntegrity() {
