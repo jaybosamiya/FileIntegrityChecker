@@ -14,7 +14,7 @@ namespace gui_dialogs {
     protected:
       bool is_location_initialized;
       std::string location;
-      FileDialog(const Glib::ustring& title, Gtk::FileChooserAction action);
+      FileDialog(const Glib::ustring& title, Gtk::FileChooserAction action, const Gtk::StockID& stock_id);
     public:
       bool get_location(std::string &loc); // Returns true iff loc is set (i.e. user does not cancel the dialog)
       void reset_location() { is_location_initialized = false; }
