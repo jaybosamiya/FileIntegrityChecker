@@ -12,6 +12,7 @@
   </object>
   <object class="GtkAboutDialog" id="aboutDialog">
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">About</property>
     <property name="icon_name">help-contents</property>
     <property name="type_hint">dialog</property>
     <property name="urgency_hint">True</property>
@@ -19,6 +20,7 @@
     <property name="program_name">Integrity File Checker</property>
     <property name="version">0.1</property>
     <property name="copyright" translatable="yes">©2014</property>
+    <property name="comments" translatable="yes">Integrity File Checker has been designed to make sure that whatever files you move from one location to another, move seamlessly. It uses state of the art hashing techniques in order to store a cryptographically sound short representation of the file to be transferred so that it can be verified quickly and efficiently for corruption of data.</property>
     <property name="authors">Jay Hitesh Bosamiya
 Palash Agrawal
 Rahul Yadav
@@ -44,6 +46,42 @@ Saurabh Sunil Jain</property>
         </child>
         <child>
           <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="helpMessageDialog">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Help</property>
+    <property name="icon_name">help-contents</property>
+    <property name="type_hint">dialog</property>
+    <property name="buttons">ok</property>
+    <property name="text" translatable="yes">Help</property>
+    <property name="secondary_text" translatable="yes">Click on "Make a .integrity file" in order to store a checksums for the file to be transferred
+
+Click on "Test Integrity of File" in order to verify that no corruption of data has occurred (for example, after file transfer)</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="messagedialog-vbox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="messagedialog-action_area">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
         </child>
       </object>
     </child>
