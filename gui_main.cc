@@ -22,11 +22,14 @@ namespace button_signal_handler {
   }
 
   void testIntegrity() {
-    std::string location_of_integrity_file;
+    std::string location_of_file, location_of_integrity_file;
+    gui_dialogs::FileOpenDialog file_open_dialog;
     gui_dialogs::IntegrityFileOpenDialog integrity_file_open_dialog;
+    if ( !file_open_dialog.get_location(location_of_file) )
+      return;
     if ( !integrity_file_open_dialog.get_location(location_of_integrity_file) )
       return;
-    std::cout << location_of_integrity_file << '\n' << std::endl; // TODO: Connect to the backend from here
+    std::cout << location_of_file << '\n' << location_of_integrity_file << '\n' << std::endl; // TODO: Connect to the backend from here
   }
 
   void help() {

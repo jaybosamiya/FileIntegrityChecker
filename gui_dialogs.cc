@@ -36,7 +36,7 @@ namespace gui_dialogs {
   }
 
   FileOpenDialog::FileOpenDialog() :
-    FileDialog("Select file to make checksums for", Gtk::FILE_CHOOSER_ACTION_OPEN, Gtk::Stock::OPEN) {
+    FileDialog("Select file for checksums", Gtk::FILE_CHOOSER_ACTION_OPEN, Gtk::Stock::OPEN) {
     this->set_filter(AllFileFilter);
   }
 
