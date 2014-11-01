@@ -33,6 +33,18 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="backend/FileReader.cc" />
+		<Unit filename="backend/FileReader.h" />
+		<Unit filename="backend/Hash.cc" />
+		<Unit filename="backend/Hash.h" />
+		<Unit filename="backend/HashChecker.cc" />
+		<Unit filename="backend/HashChecker.h" />
+		<Unit filename="backend/HashGenerator.cc" />
+		<Unit filename="backend/HashGenerator.h" />
+		<Unit filename="backend/md5.cc" />
+		<Unit filename="backend/md5.h" />
+		<Unit filename="backend/sha1.cc" />
+		<Unit filename="backend/sha1.h" />
 		<Unit filename="gui/mainWindow.glade" />
 		<Unit filename="gui_dialogs.cc" />
 		<Unit filename="gui_dialogs.h" />

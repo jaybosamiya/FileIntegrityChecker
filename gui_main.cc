@@ -1,6 +1,9 @@
 #include "gui_main.h"
 #include "gui_dialogs.h"
 
+#include "backend/HashChecker.h"
+#include "backend/HashGenerator.h"
+
 #include <iostream>
 
 namespace gui_common {
@@ -18,7 +21,7 @@ namespace button_signal_handler {
       return;
     if ( !integrity_file_save_dialog.get_location(location_of_integrity_file) )
       return;
-    std::cout << location_of_file << '\n' << location_of_integrity_file << '\n' << std::endl; // TODO: Connect to the backend from here
+    HashGenerator::generateIntegrityFile(location_of_file,location_of_integrity_file);
   }
 
   void testIntegrity() {
@@ -29,7 +32,9 @@ namespace button_signal_handler {
       return;
     if ( !integrity_file_open_dialog.get_location(location_of_integrity_file) )
       return;
-    std::cout << location_of_file << '\n' << location_of_integrity_file << '\n' << std::endl; // TODO: Connect to the backend from here
+    bool is_valid = HashChecker::check(location_of_file, location_of_integrity_file);
+    std::cout << is_valid << std::endl;
+    // TODO: Do something with is_valid (i.e. make a dialog)
   }
 
   void help() {
