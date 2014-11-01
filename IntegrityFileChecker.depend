@@ -6349,12 +6349,14 @@
 1414535889 /home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/gui_main.h
 	<gtkmm.h>
 
-1414605077 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/gui_main.cc
+1414847992 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/gui_main.cc
 	"gui_main.h"
 	"gui_dialogs.h"
+	"backend/HashChecker.h"
+	"backend/HashGenerator.h"
 	<iostream>
 
-1414537155 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/gui_dialogs.cc
+1414605124 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/gui_dialogs.cc
 	"gui_dialogs.h"
 	"gui_main.h"
 
@@ -6506,4 +6508,49 @@
 1414430340 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/AfterAddingBackend/main.cc
 	<iostream>
 	"gui_main.h"
+
+1414846919 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/FileReader.cc
+	"FileReader.h"
+	<iostream>
+
+1414846848 /home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/FileReader.h
+	<string>
+	<fstream>
+
+1414847190 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/Hash.cc
+	"Hash.h"
+	<iostream>
+	<fstream>
+
+1414847170 /home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/Hash.h
+	<string>
+	"md5.h"
+	"sha1.h"
+	"FileReader.h"
+
+1414834195 /home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/md5.h
+	<cstring>
+	<iostream>
+
+1414834503 /home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/sha1.h
+	<iostream>
+	<string>
+
+1414847314 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/md5.cc
+	"md5.h"
+	<cstdio>
+
+1414847318 source:/home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/sha1.cc
+	"sha1.h"
+	<sstream>
+	<iomanip>
+	<fstream>
+
+1414847610 /home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/HashChecker.h
+	"HashGenerator.h"
+	<string>
+
+1414847562 /home/jay/Desktop/IITR/OOAD/OOAD_Project/ProjectInCodeBlocks/IntegrityFileChecker/backend/HashGenerator.h
+	"Hash.h"
+	<string>
 
