@@ -62,7 +62,7 @@ Saurabh Sunil Jain</property>
     <property name="type_hint">dialog</property>
     <property name="buttons">ok</property>
     <property name="text" translatable="yes">Help</property>
-    <property name="secondary_text" translatable="yes">Click on "Make a .integrity file" in order to store a checksums for the file to be transferred
+    <property name="secondary_text" translatable="yes">Click on "Make a .integrity file" in order to store checksums for the file to be transferred
 
 Click on "Test Integrity of File" in order to verify that no corruption of data has occurred (for example, after file transfer)</property>
     <child internal-child="vbox">
