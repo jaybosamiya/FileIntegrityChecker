@@ -15,10 +15,9 @@ void HashGenerator::generateIntegrityFile(std::string inputFileName, std::string
 
         std::ofstream outputFile (outputFileName.c_str());
 
-        outputFile<<".IntregityFile of : "<<inputFileName<<std::endl<<std::endl;
-        outputFile<<"Hashes are "<<std::endl;
-        outputFile<<h1->get_hash_type()<<" : "<<h1->get_hash_value()<<std::endl;
-        outputFile<<h2->get_hash_type()<<" : "<<h2->get_hash_value()<<std::endl;
+        outputFile<<"INTEGRITY"<<std::endl;
+        outputFile<<h1->get_hash_type()<<' '<<h1->get_hash_value()<<std::endl;
+        outputFile<<h2->get_hash_type()<<' '<<h2->get_hash_value()<<std::endl;
 
         outputFile.close();
     }else{
