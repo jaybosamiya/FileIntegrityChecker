@@ -1,7 +1,7 @@
 CC     := g++
 CFLAGS := `pkg-config gtkmm-3.0 --cflags`
 LIBS   := `pkg-config gtkmm-3.0 --libs`
-OBJDIR    := obj/Release
+OBJDIR    := obj
 
 objs   := $(OBJDIR)/main.o \
 				$(OBJDIR)/gui_main.o \
