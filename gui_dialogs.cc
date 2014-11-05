@@ -8,7 +8,7 @@ namespace gui_dialogs {
   void FileDialog::location_setter(int response_id) {
     location = get_filename();
     hide();
-    is_location_initialized = (response_id != Gtk::RESPONSE_CANCEL);
+    is_location_initialized = (response_id == Gtk::RESPONSE_OK);
   }
 
   FileDialog::FileDialog(const Glib::ustring& title, Gtk::FileChooserAction action, const Gtk::StockID& stock_id) :
