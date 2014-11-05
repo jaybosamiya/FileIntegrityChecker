@@ -38,7 +38,7 @@ $(OBJDIR)/%.o : %.cc | $(OBJDIR)
 all : $(BINDIR)/IntegrityFileChecker
 
 clean :
-	rm -rf $(BINDIR) IntegrityFileChecker.tar.gz $(OBJDIR) *~ src/*~ src/backend/*~
+	rm -rf $(BINDIR) IntegrityFileChecker.tar.gz $(OBJDIR) *~ src/*~ src/backend/*~ src/gui/*~
 
 targz : $(BINDIR)/IntegrityFileChecker $(BINDIR)/gui/mainWindow.glade
 	tar czf IntegrityFileChecker.tar.gz $^
