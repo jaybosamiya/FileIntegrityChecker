@@ -36,6 +36,14 @@ namespace gui_dialogs {
       IntegrityFileSaveDialog();
   };
 
+  class MessageDialog : public Gtk::MessageDialog {
+    private:
+      void dialog_response(int response_id);
+    public:
+      MessageDialog(Gtk::MessageType msg_type = Gtk::MESSAGE_INFO);
+      void show_message(std::string primary, std::string secondary = "");
+  };
+
   void show_help();
   void show_about_dialog();
 

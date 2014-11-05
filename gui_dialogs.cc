@@ -50,19 +50,28 @@ namespace gui_dialogs {
     this->set_filter(IntegrityFileFilter);
   }
 
-  static Gtk::MessageDialog* helpMessageDialog = 0;
-
-  static void help_message_dialog_response(int response_id) {
+  void MessageDialog::dialog_response(int response_id) {
     if((response_id == Gtk::RESPONSE_CLOSE) ||
         (response_id == Gtk::RESPONSE_OK) ||
         (response_id == Gtk::RESPONSE_CANCEL) )
-      helpMessageDialog->hide();
+      this->hide();
+  }
+
+  MessageDialog::MessageDialog(Gtk::MessageType msg_type) : Gtk::MessageDialog("", false, msg_type, Gtk::BUTTONS_OK) {
+    set_title("File Integrity Checker");
+    signal_response().connect(sigc::mem_fun(*this, &MessageDialog::dialog_response));
+  }
+
+  void MessageDialog::show_message(std::string primary, std::string secondary) {
+    set_message(primary);
+    set_secondary_text(secondary);
+    run();
   }
 
   void show_help() {
-    builder->get_widget("helpMessageDialog",helpMessageDialog);
-    helpMessageDialog->signal_response().connect(sigc::ptr_fun(&gui_dialogs::help_message_dialog_response));
-    helpMessageDialog->run();
+    MessageDialog helpMessageDialog;
+    helpMessageDialog.show_message("Help","Click on \"Make a .integrity file\" in order to store checksums for the file to be transferred\n\n"
+      "Click on \"Test Integrity of File\" in order to verify that no corruption of data has occurred (for example, after file transfer)");
   }
 
   static Gtk::AboutDialog* aboutDialog = 0;
