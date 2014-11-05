@@ -96,7 +96,7 @@ namespace gui_dialogs {
     } else {
       MessageDialog invalidDialog(Gtk::MESSAGE_WARNING);
       invalidDialog.show_message("Invalid","The file's integrity is compromized. Either the .integrity file, or the actual file itself have "
-        "differences from when thay were first made.\nWe suggest that you should retry transfering the file and it's .integrity file.");
+        "differences from when they were first made.\nWe suggest that you should retry transfering the file and it's .integrity file.");
     }
   }
 
