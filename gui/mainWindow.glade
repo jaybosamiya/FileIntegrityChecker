@@ -23,7 +23,7 @@
     <property name="urgency_hint">True</property>
     <property name="gravity">north</property>
     <property name="program_name">Integrity File Checker</property>
-    <property name="version">0.1</property>
+    <property name="version">0.2</property>
     <property name="copyright" translatable="yes">©2014</property>
     <property name="comments" translatable="yes">Integrity File Checker has been designed to make sure that whatever files you move from one location to another, move seamlessly. It uses state of the art hashing techniques in order to store a cryptographically sound short representation of the file to be transferred so that it can be verified quickly and efficiently for corruption of data.</property>
     <property name="authors">Jay Hitesh Bosamiya
