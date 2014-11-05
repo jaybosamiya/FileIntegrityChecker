@@ -22,13 +22,15 @@ $(OBJDIR)/backend/%.o : backend/%.cc | $(OBJDIR)/backend
 $(OBJDIR)/%.o : %.cc | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean
+.PHONY: all clean targz
 
 all : IntegrityFileChecker
 
 clean :
-	rm -f *~
-	rm -rf $(OBJDIR)
+	rm -rf IntegrityFileChecker IntegrityFileChecker.tar.gz $(OBJDIR) *~
+
+targz : IntegrityFileChecker gui/mainWindow.glade
+	tar czf IntegrityFileChecker.tar.gz IntegrityFileChecker gui/mainWindow.glade
 
 $(OBJDIR)/backend : $(OBJDIR)
 	mkdir -p $(OBJDIR)/backend
