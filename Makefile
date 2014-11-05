@@ -22,20 +22,11 @@ $(OBJDIR)/backend/%.o : backend/%.cc | $(OBJDIR)/backend
 $(OBJDIR)/%.o : %.cc | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean_gui clean_backend clean_bin clean
+.PHONY: all clean
 
 all : IntegrityFileChecker
 
-clean_gui :
-	rm -f $(OBJDIR)/*.o	
-
-clean_backend :
-	rm -f $(OBJDIR)/backend/*.o
-
-clean_bin :
-	rm -f IntegrityFileChecker
-
-clean : clean_gui clean_backend clean_bin
+clean :
 	rm -f *~
 	rm -rf $(OBJDIR)
 
