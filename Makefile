@@ -6,6 +6,7 @@ CC     := g++
 CFLAGS := `pkg-config gtkmm-3.0 --cflags`
 LIBS   := `pkg-config gtkmm-3.0 --libs`
 OBJDIR := obj
+BINDIR := bin
 
 vpath %.cc src
 
@@ -19,12 +20,12 @@ objs := $(OBJDIR)/main.o \
 				$(OBJDIR)/backend/md5.o \
 				$(OBJDIR)/backend/sha1.o
 
-IntegrityFileChecker : $(objs) gui/mainWindow.glade
-	$(CC) -o IntegrityFileChecker $(objs) $(LIBS)
+$(BINDIR)/IntegrityFileChecker : $(objs) $(BINDIR)/gui/mainWindow.glade
+	$(CC) -o $(BINDIR)/IntegrityFileChecker $(objs) $(LIBS)
 
-gui/mainWindow.glade : src/gui/mainWindow.glade
-	mkdir -p gui
-	cp -f src/gui/mainWindow.glade gui/
+$(BINDIR)/gui/mainWindow.glade : src/gui/mainWindow.glade
+	mkdir -p $(BINDIR)/gui
+	cp -f src/gui/mainWindow.glade $(BINDIR)/gui/
 
 $(OBJDIR)/backend/%.o : backend/%.cc | $(OBJDIR)/backend
 	$(CC) -c $< -o $@
@@ -37,10 +38,10 @@ $(OBJDIR)/%.o : %.cc | $(OBJDIR)
 all : IntegrityFileChecker
 
 clean :
-	rm -rf IntegrityFileChecker IntegrityFileChecker.tar.gz $(OBJDIR) gui *~
+	rm -rf $(BINDIR) IntegrityFileChecker.tar.gz $(OBJDIR) *~
 
-targz : IntegrityFileChecker
-	tar czf IntegrityFileChecker.tar.gz IntegrityFileChecker gui/mainWindow.glade
+targz : $(BINDIR)/IntegrityFileChecker
+	tar czf IntegrityFileChecker.tar.gz $(BINDIR)/IntegrityFileChecker $(BINDIR)/gui/mainWindow.glade
 
 $(OBJDIR)/backend : $(OBJDIR)
 	mkdir -p $(OBJDIR)/backend
