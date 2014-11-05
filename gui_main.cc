@@ -33,8 +33,7 @@ namespace button_signal_handler {
     if ( !integrity_file_open_dialog.get_location(location_of_integrity_file) )
       return;
     bool is_valid = HashChecker::check(location_of_file, location_of_integrity_file);
-    std::cout << is_valid << std::endl;
-    // TODO: Do something with is_valid (i.e. make a dialog)
+    gui_dialogs::show_that_file(is_valid);
   }
 
   void help() {

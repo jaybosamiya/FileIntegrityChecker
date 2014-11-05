@@ -50,19 +50,28 @@ namespace gui_dialogs {
     this->set_filter(IntegrityFileFilter);
   }
 
-  static Gtk::MessageDialog* helpMessageDialog = 0;
-
-  static void help_message_dialog_response(int response_id) {
+  void MessageDialog::dialog_response(int response_id) {
     if((response_id == Gtk::RESPONSE_CLOSE) ||
         (response_id == Gtk::RESPONSE_OK) ||
         (response_id == Gtk::RESPONSE_CANCEL) )
-      helpMessageDialog->hide();
+      this->hide();
+  }
+
+  MessageDialog::MessageDialog(Gtk::MessageType msg_type) : Gtk::MessageDialog("", false, msg_type, Gtk::BUTTONS_OK) {
+    set_title("File Integrity Checker");
+    signal_response().connect(sigc::mem_fun(*this, &MessageDialog::dialog_response));
+  }
+
+  void MessageDialog::show_message(std::string primary, std::string secondary) {
+    set_message(primary);
+    set_secondary_text(secondary);
+    run();
   }
 
   void show_help() {
-    builder->get_widget("helpMessageDialog",helpMessageDialog);
-    helpMessageDialog->signal_response().connect(sigc::ptr_fun(&gui_dialogs::help_message_dialog_response));
-    helpMessageDialog->run();
+    MessageDialog helpMessageDialog(Gtk::MESSAGE_QUESTION);
+    helpMessageDialog.show_message("Help","Click on \"Make a .integrity file\" in order to store checksums for the file to be transferred\n\n"
+      "Click on \"Test Integrity of File\" in order to verify that no corruption of data has occurred (for example, after file transfer)");
   }
 
   static Gtk::AboutDialog* aboutDialog = 0;
@@ -77,6 +86,18 @@ namespace gui_dialogs {
     builder->get_widget("aboutDialog",aboutDialog);
     aboutDialog->signal_response().connect(sigc::ptr_fun(&gui_dialogs::about_dialog_response));
     aboutDialog->run();
+  }
+
+  void show_that_file(bool is_valid) {
+    if ( is_valid ) {
+      MessageDialog validDialog;
+      validDialog.show_message("Valid","The file's integrity is uncompromized. You can be assured that the file is exactly as it was when the "
+        ".integrity file was made.");
+    } else { // Use Gtk::MESSAGE_WARNING 	or Gtk::MESSAGE_ERROR
+      MessageDialog invalidDialog(Gtk::MESSAGE_ERROR);
+      invalidDialog.show_message("Invalid","The file's integrity is compromized. Either the .integrity file, or the actual file itself have "
+        "differences from when thay were first made.\nWe suggest that you should retry transfering the file and it's .integrity file.");
+    }
   }
 
 }
