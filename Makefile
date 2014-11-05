@@ -21,11 +21,11 @@ objs := $(OBJDIR)/main.o \
 				$(OBJDIR)/backend/sha1.o
 
 $(BINDIR)/IntegrityFileChecker : $(objs) $(BINDIR)/gui/mainWindow.glade
-	$(CC) -o $(BINDIR)/IntegrityFileChecker $(objs) $(LIBS)
+	$(CC) -o $@ $(objs) $(LIBS)
 
 $(BINDIR)/gui/mainWindow.glade : src/gui/mainWindow.glade
-	mkdir -p $(BINDIR)/gui
-	cp -f src/gui/mainWindow.glade $(BINDIR)/gui/
+	mkdir -p $(@D)
+	cp -f $< $@
 
 $(OBJDIR)/backend/%.o : backend/%.cc | $(OBJDIR)/backend
 	$(CC) -c $< -o $@
@@ -40,11 +40,12 @@ all : IntegrityFileChecker
 clean :
 	rm -rf $(BINDIR) IntegrityFileChecker.tar.gz $(OBJDIR) *~
 
-targz : $(BINDIR)/IntegrityFileChecker
-	tar czf IntegrityFileChecker.tar.gz $(BINDIR)/IntegrityFileChecker $(BINDIR)/gui/mainWindow.glade
+targz : $(BINDIR)/IntegrityFileChecker $(BINDIR)/gui/mainWindow.glade
+	tar czf IntegrityFileChecker.tar.gz $^
 
 $(OBJDIR)/backend : $(OBJDIR)
-	mkdir -p $(OBJDIR)/backend
+	mkdir -p $@
 
 $(OBJDIR) :
-	mkdir -p $(OBJDIR)
+	mkdir -p $@
+
