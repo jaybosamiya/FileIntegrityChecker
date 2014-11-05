@@ -22,6 +22,8 @@ namespace button_signal_handler {
     if ( !integrity_file_save_dialog.get_location(location_of_integrity_file) )
       return;
     HashGenerator::generateIntegrityFile(location_of_file,location_of_integrity_file);
+    gui_dialogs::MessageDialog createdDialog;
+    createdDialog.show_message("Success", ".integrity file has been successfully created at the specified location");
   }
 
   void testIntegrity() {
