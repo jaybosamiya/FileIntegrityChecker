@@ -69,7 +69,7 @@ namespace gui_dialogs {
   }
 
   void show_help() {
-    MessageDialog helpMessageDialog;
+    MessageDialog helpMessageDialog(Gtk::MESSAGE_QUESTION);
     helpMessageDialog.show_message("Help","Click on \"Make a .integrity file\" in order to store checksums for the file to be transferred\n\n"
       "Click on \"Test Integrity of File\" in order to verify that no corruption of data has occurred (for example, after file transfer)");
   }
