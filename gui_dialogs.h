@@ -46,6 +46,7 @@ namespace gui_dialogs {
 
   void show_help();
   void show_about_dialog();
+  void show_that_file(bool is_valid);
 
 }
 

@@ -88,4 +88,16 @@ namespace gui_dialogs {
     aboutDialog->run();
   }
 
+  void show_that_file(bool is_valid) {
+    if ( is_valid ) {
+      MessageDialog validDialog;
+      validDialog.show_message("Valid","The file's integrity is uncompromized. You can be assured that the file is exactly as it was when the "
+        ".integrity file was made.");
+    } else { // Use Gtk::MESSAGE_WARNING 	or Gtk::MESSAGE_ERROR
+      MessageDialog invalidDialog(Gtk::MESSAGE_ERROR);
+      invalidDialog.show_message("Invalid","The file's integrity is compromized. Either the .integrity file, or the actual file itself have "
+        "differences from when thay were first made.\nWe suggest that you should retry transfering the file and it's .integrity file.");
+    }
+  }
+
 }
