@@ -8,6 +8,6 @@ This is done using multiple cryptographic hashes (to maintain redundancy – ens
 Usage
 -----
 
-Install libgtk using `sudo apt-get install libgtkmm-3.0-dev`
-Type `make` and wait for compilation to finish
-Use the binary created in the bin folder by double-clicking
++ Install libgtk using `sudo apt-get install libgtkmm-3.0-dev`
++ Type `make` and wait for compilation to finish
++ Use the binary created in the bin folder by double-clicking
